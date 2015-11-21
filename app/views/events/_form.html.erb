@@ -8,10 +8,13 @@
 
   <div class="field">
 		<%= f.label :start_date %>
-		<%= f.date_field :start_date, :style => "width:150px" %>
+		<%= f.datetime_select :start_date, :style => "width:150px" %>
     <%= error_message @event, :start_date %>
+  </div>
+  <div class="field">
 	  <%= f.label :end_date %>
-	  <%= f.date_field :end_date, :style => "width:150px" %>
+	  <%= f.datetime_select :end_date, :style => "width:150px" %>
+    <%= error_message @event, :end_date %>
   </div>
 
   <div class="field">

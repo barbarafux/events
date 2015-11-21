@@ -1,5 +1,4 @@
 class Event < ActiveRecord::Base
-
 	belongs_to :city
 
 	validates_presence_of :name, :start_date

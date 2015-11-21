@@ -82,6 +82,6 @@ private
     end
 
     def event_params
-    	params.require(:event).permit(:name, :start_date, :end_date, :website)
+    	params.require(:event).permit(:name, :start_date, :end_date, :website, :city_id)
     end
 end

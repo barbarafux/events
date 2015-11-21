@@ -8,6 +8,6 @@
        until <%= friendly_date(event.end_date) %>
        <%#= localize(event.end_date) %>
     <% end %>
-    <%#= '- ' + event.city.city_name %></p>
+    <%= '- ' + event.city.name %>, <%= event.city.country %></p>
 <% end %>
 <!-- END ALL -->
