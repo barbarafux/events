@@ -1,3 +1,30 @@
-<%= form_for(@events) do  |f| %>
+<%= form_for(@event) do  |f| %>
 
+  <div class="field">
+  	<%= f.label :name %>
+  	<%= f.text_field :name, :style => "width:320px" %>
+    <%= error_message @event, :name %>
+  </div>
+
+  <div class="field">
+		<%= f.label :start_date %>
+		<%= f.date_field :start_date, :style => "width:150px" %>
+    <%= error_message @event, :start_date %>
+	  <%= f.label :end_date %>
+	  <%= f.date_field :end_date, :style => "width:150px" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :website %>
+		<%= f.text_field :website, :style => "width:300px" %>
+    <%= error_message @event, :website %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city_id %>
+    <%= f.collection_select :city_id, City.order('name'), :id, :name, {prompt: 'Select City'} %>
+    <%= error_message @event, :city_id %>
+  </div>
+
+   <%= f.submit "Submit", class: "btn btn-sm  btn-primary" %>
 <% end %>

@@ -1,0 +1,13 @@
+<!-- ALL -->
+<h3>All</h3>
+<% @events.each do |event| %>
+    <h4><%= link_to event.name, event %></h4>
+      <%#= localize(event.start_date) %>
+      <p><%= friendly_date(event.start_date) %>
+    <% if event.end_date.present? && event.end_date != event.start_date %>
+       until <%= friendly_date(event.end_date) %>
+       <%#= localize(event.end_date) %>
+    <% end %>
+    <%#= '- ' + event.city.city_name %></p>
+<% end %>
+<!-- END ALL -->
