@@ -11,12 +11,11 @@ module EventsHelper
 	end
 
 	# def add_to_g_cal(event) #Europe/Vienna
-	#   	"https://www.google.com/calendar/render?action=TEMPLATE&text=#{url_encode(event.name)}&dates=event.start_date/event.start_date&details=#{url_encode(event.website)}&location=#{url_encode(event.city.name)}&sf=true&output=xml"
-	#   	
+	#   	"https://www.google.com/calendar/render?action=TEMPLATE&text=#{url_encode(event.name)}&dates=event.start_date/event.start_date&details=#{url_encode(event.website)}&location=#{url_encode(event.city.name)}&sf=true&output=xml"	
 	# end
 
 	def iso_format(date)
-		date.iso8601.delete('-').delete(':')
+		date.iso8601.delete('-').delete(':').delete('Z')
 	end
 
 	  def add_to_g_cal(event)
@@ -29,6 +28,7 @@ module EventsHelper
 	    # "&dates=" + event.start_date.iso8601.delete('-').delete(':') + 
 	    # "/" + event.end_date.iso8601.delete('-').delete(':')
 	    "&dates=" + iso_format(event.start_date) + 
-	    "/" + iso_format(event.end_date)
+	    "/" + iso_format(event.end_date) +
+	    "&ctz=Europe/Vienna"
 	end
 end
