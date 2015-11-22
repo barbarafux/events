@@ -7,4 +7,9 @@ class Event < ActiveRecord::Base
 		:allow_blank => true,
 		:with => URI::regexp(%w(http https))
 
+	scope :today, lambda { where(start_date: Time.zone.now.all_day) }
+	scope :past, lambda { where('start_date: <= ?', Date.today)}
+	#scope :month, lambda { where(tbd) }
+	#http://stackoverflow.com/questions/15710106/get-db-records-from-today-and-tomorrow-in-rails
+
 end

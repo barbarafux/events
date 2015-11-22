@@ -1,0 +1,13 @@
+<!-- UPCOMING GROUPED BY MONTH -->
+<% @events.each do |month, events| %>
+  <h4><%= month.strftime('%B').upcase %></h4>
+  <% for event in events %>
+      <h4><%= link_to event.name, event %></h4>
+        <%= friendly_date(event.start_date) %>
+        <% if event.end_date.present? && event.end_date != event.start_date %>
+        until <%= friendly_date(event.end_date) %>
+      <% end %>
+      <%= '- ' + event.city.name %>, <%= event.city.continent %>
+  <% end %>
+<% end %>
+<!-- UPCOMING GROUPED BY MONTH -->

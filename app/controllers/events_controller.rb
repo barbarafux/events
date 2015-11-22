@@ -7,18 +7,13 @@ class EventsController < ApplicationController
 		    when 'today'
 		    	@events = Event.today
 		    	@partial_name = 'today'
-		    when 'upcoming'
-		      	@events = Event.where('start_date >= ?', Time.now).order('start_date asc').limit(3)
-		      	@partial_name = 'upcoming'
 		    when 'past'
-		 		@events = Event.where('start_date < ?', DateTime.now-1).order('start_date asc').limit(3)
+		 		@events = Event.where('start_date < ?', DateTime.now-1).order('start_date asc').limit(6)
 		 		@partial_name = 'past'
-	 	    when 'bymonth'
-	  	    	@events = Event.all.order('start_date').group_by { |t| t.start_date.beginning_of_month }
-	  	    	@partial_name = 'bymonth'
 	  	    else
-	  	    	@events = Event.all.order('start_date asc')
-	  	    	@partial_name = 'all'
+	  	    	@events = Event.where('start_date > ?', DateTime.now).group_by { |t| t.start_date.beginning_of_month}
+	  	    	#@events = Event.all.order('start_date').group_by { |t| t.start_date.beginning_of_month }
+	  	    	@partial_name = 'upcoming'
 	  	end
 
 		#Search
