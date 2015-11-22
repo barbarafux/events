@@ -8,7 +8,10 @@ class EventsController < ApplicationController
 		    	@events = Event.today
 		    	@partial_name = 'today'
 		    when 'past'
-		 		@events = Event.where('start_date < ?', DateTime.now-1).order('start_date asc').limit(6)
+		 		#@events = Event.where('start_date < ?', DateTime.now-1).order('start_date asc').limit(6)
+		 		#@events = Event.where('start_date < ?', DateTime.now-1).group_by { |t| t.start_date.beginning_of_month }.page(params[:page]).per(4)
+		 		@events = Event.where('start_date < ?', DateTime.now-1).order('start_date asc').page(params[:page]).page(params[:page]).per(4)
+
 		 		@partial_name = 'past'
 	  	    else
 	  	    	@events = Event.where('start_date > ?', DateTime.now).group_by { |t| t.start_date.beginning_of_month}
