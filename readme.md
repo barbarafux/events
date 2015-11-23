@@ -4,6 +4,7 @@ This is the first draft of an event listing app. The app is another step forward
 
 ## Resources
 [Bootstrap](http://getbootstrap.com/) for the layout
+
 [Font Awesome](http://fortawesome.github.io/Font-Awesome/) for Icons
 
 ## License
