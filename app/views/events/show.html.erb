@@ -2,14 +2,20 @@
 
 <%#= localize @event.start_date %>
 <p>
+<i class="fa fa-calendar"></i>
 <%= friendly_date(@event.start_date) %>
-<% if @event.end_date.present? && @event.end_date != @event.start_date  %> <br \>
+<% if @event.end_date.present? && @event.end_date != @event.start_date %> <br \>
 	 until <br \>
 	 <%= friendly_date(@event.end_date) %><br \>
 <% end %>
 </p>
-<br \>
-<%= link_to @event.website, url_for(@event.website), :target => '_blank' %><br \>
+
+<% if @event.website.present? %>
+	<i class="fa fa-laptop"></i>
+	<%= link_to @event.website, url_for(@event.website), :target => '_blank' %><br \> 
+<% end %>
+
+<i class="fa fa-map-marker"></i>
 <%= @event.city.name %>, <%= @event.city.continent %><br \>
 <!-- Iso -->
 <!-- <br \>

@@ -1,5 +1,10 @@
+/* BOOTSTRAP */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+/* FONT AWESOME */
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 body {
 	margin-top: 50px;
