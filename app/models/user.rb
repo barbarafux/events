@@ -1,14 +1,19 @@
 class User < ActiveRecord::Base
+	# encoding: utf-8
 	before_save { self.email = email.downcase }
 
-	##VALIDATIONS
+	## VALIDATIONS
 	validates_presence_of :email, :password
 
+	##  EMAIL
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-	validates_format_of :email, length: { maximum: 255 },
-                 	    format: { with: VALID_EMAIL_REGEX },
+	validates_format_of :email, 
+                 	    :with => VALID_EMAIL_REGEX,
+                 	    length: { maximum: 255 },
                  	    uniqueness: { case_sensitive: false }
 
+    ## PASSWORD
     has_secure_password
-    validates_format_of :password, presence: true; length: { minimum: 8 }
+    validates :password, length: { minimum: 8 }
+
 end

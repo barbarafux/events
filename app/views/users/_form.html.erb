@@ -1,0 +1,22 @@
+<%= form_for(@user) do |f| %>
+  <div class="field">
+  	<%= f.label :email %>
+  	<%= f.text_field :email, :style => "width:320px" %>
+    <%= error_message @user, :email %>
+  </div>
+
+  <div class="field">
+  	<%= f.label :password %>
+  	<%= f.password_field :password, :style => "width:320px" %>
+    <%= error_message @user, :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :style => "width:320px" %>
+    <%= error_message @user, :password_confirmation %>
+  </div>
+
+  <%= f.submit "Submit" %>
+
+<% end %>
