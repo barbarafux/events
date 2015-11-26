@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	# encoding: utf-8
+	
 	before_save { self.email = email.downcase }
 
 	## VALIDATIONS
