@@ -13,7 +13,8 @@ class Event < ActiveRecord::Base
 	#http://stackoverflow.com/questions/15710106/get-db-records-from-today-and-tomorrow-in-rails
 
 	def self.search(search)
-			where('lower(name) LIKE ?', "%#{search.to_s.downcase}%") 
+		joins(:city).where('lower(cities.name) LIKE ? or lower(events.name) LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%")
+		#joins(:city).where('cities.name LIKE ?', "%#{search.downcase}%")
 	end
 
 end
