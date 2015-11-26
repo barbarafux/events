@@ -12,4 +12,8 @@ class Event < ActiveRecord::Base
 	#scope :month, lambda { where(tbd) }
 	#http://stackoverflow.com/questions/15710106/get-db-records-from-today-and-tomorrow-in-rails
 
+	def self.search(search)
+			where('lower(name) LIKE ?', "%#{search.to_s.downcase}%") 
+	end
+
 end

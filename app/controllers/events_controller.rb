@@ -3,29 +3,34 @@ class EventsController < ApplicationController
 
 	def index
 
-		case params[:events]
-		    when 'today'
-		    	@events = Event.today
-		    	@partial_name = 'today'
-		    when 'past'
-		 		#@events = Event.where('start_date < ?', DateTime.now-1).order('start_date asc').limit(6)
-		 		#@events = Event.where('start_date < ?', DateTime.now-1).group_by { |t| t.start_date.beginning_of_month }.page(params[:page]).per(4)
-		 		@events = Event.where('start_date < ?', DateTime.now-1).order('start_date desc').page(params[:page]).per(4)
+ 		if params[:search]
+   			@events = Event.search(params[:search])
+  			@partial_name = 'search'
+  		else	
+			case params[:events]
+			    when 'today'
+			    	@events = Event.today
+			    	@partial_name = 'today'
+			    when 'past'
+			 		#@events = Event.where('start_date < ?', DateTime.now-1).order('start_date asc').limit(6)
+			 		#@events = Event.where('start_date < ?', DateTime.now-1).group_by { |t| t.start_date.beginning_of_month }.page(params[:page]).per(4)
+			 		@events = Event.where('start_date < ?', DateTime.now-1).order('start_date desc').page(params[:page]).per(4)
 
-		 		@partial_name = 'past'
-	  	    else
-	  	    	@events = Event.where('start_date > ?', DateTime.now).group_by { |t| t.start_date.beginning_of_month}
-	  	    	#@events = Event.all.order('start_date').group_by { |t| t.start_date.beginning_of_month }
-	  	    	@partial_name = 'upcoming'
-	  	end
+			 		@partial_name = 'past'
+		  	    else
+		  	    	@events = Event.where('start_date > ?', DateTime.now).order('start_date asc').group_by { |t| t.start_date.beginning_of_month}
+		  	    	#@events = Event.all.order('start_date').group_by { |t| t.start_date.beginning_of_month }
+		  	    	@partial_name = 'upcoming'
+		  	end
+		 end
 
 		#Search
-		if params[:search].present?
-      		@events = @events.where('lower(name) like :search', search: '%#{params[:search].downcase}%')
-      		#@events = @events.where("lower(name) like :search or lower(event_type) like :search", search: "%#{params[:search].downcase}%")
-      	end
-
-	end
+		# if params[:search].present?
+  #     		#@events = Event.where('lower(name) like :search', search: '%#{params[:search].downcase}%')
+  #     		#@events = @events.where("lower(name) like :search or lower(event_type) like :search", search: "%#{params[:search].downcase}%")
+  #     		@events = Event.search(params[:search])
+  #     	end
+  	end
 
 	def show
 	end
@@ -67,7 +72,7 @@ class EventsController < ApplicationController
 	def destroy
 		@event.destroy
 		respond_to do |format|
-			format.html { rediretct_to event_url, notice: 'Event was deleted.' }
+			format.html { redirect_to event_url, notice: 'Event was deleted.' }
 			format.json { head :no_content }
 		end
 	end
