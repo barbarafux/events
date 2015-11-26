@@ -1,0 +1,8 @@
+<% if @events.present? %>
+	<% @events.each do |event| %>
+  		<h4><%= link_to event.name, event %></h4>
+  		<br />
+    <% end %>
+<% else %>
+  <p>There are no events containing the term(s) <%= params[:search] %>.</p>
+<% end %>
