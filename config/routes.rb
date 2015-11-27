@@ -7,7 +7,7 @@ Rails.application.routes.draw do
    resources :events
    resources :users
 
-   get '/signup' => 'users#new'
+   get '/signup' => 'users#new'#, :as => 'signup'
    
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
