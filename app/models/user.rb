@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
 				  		   }
     
     validates :password,
-    		  	length: { minimum: 4 }
+    		  	length: { minimum: 8 }
 
 end
