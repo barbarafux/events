@@ -78,6 +78,8 @@ private
     								  :start_date,
     								  :end_date,
     								  :website,
-    								  :city_id)
+    								  :city_id,
+    								  :image,
+    								  :remove_image)
     end
 end
