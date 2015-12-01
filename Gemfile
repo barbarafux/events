@@ -20,6 +20,7 @@ gem 'kaminari'										# Used for pagination
 gem 'bcrypt', '~> 3.1.7'							# Use ActiveModel has_secure_password
 # gem 'unicorn'										# Use Unicorn as the app server
 # gem 'capistrano-rails', group: :development		# Use Capistrano for deployment
+gem 'carrierwave'									# Used for image upload
 
 group :development, :test do
   gem 'byebug'										# Call 'byebug' anywhere in the code to stop execution and get a debugger console

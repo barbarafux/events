@@ -17,6 +17,9 @@
 
 <i class="fa fa-map-marker"></i>
 <%= @event.city.name %>, <%= @event.city.continent %><br \>
+
+<%= image_tag @event.image.url if @event.image? %>
+
 <!-- Iso -->
 <br \>
 	<!-- 20140127T224000Z --><br \>
