@@ -17,4 +17,6 @@ class Event < ActiveRecord::Base
 		#joins(:city).where('cities.name LIKE ?', "%#{search.downcase}%")
 	end
 
+	mount_uploader :image, EventpicUploader
+
 end
