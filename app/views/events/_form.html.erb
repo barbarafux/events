@@ -32,8 +32,8 @@
   <div class="field">
     <%= f.label :image %>
     <%= f.file_field :image %>
+    <%= f.check_box :remove_image %> Remove image
     <%= error_message @event, :image %>
-  </div>
-
+<br />
    <%= f.submit "Submit", class: "btn btn-sm  btn-primary" %>
 <% end %>
