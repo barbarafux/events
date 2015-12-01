@@ -1,21 +1,20 @@
 <h3>Login</h3>
-<p>Find me in app/views/sessions/new.html.erb</p>
 
 <%= form_for sessions_path do |f| %>
+<%#= form_for(:session, url: sessions_path) do |f| %> 
   <div class="field">
   	<%= f.label :email %>
   	<%= f.text_field :email, :style => "width:320px" %>
     <%#= error_message @user, :email %>
   </div>
 
-<div class="field">
-	<%= f.label :password %>
-	<%= f.password_field :password, :style => "width:320px" %>
-</div>
-
+  <div class="field">
+  	<%= f.label :password %>
+  	<%= f.password_field :password, :style => "width:320px" %>
+  </div>
 
   <div class="actions">
-	<%= submit_tag 'Login' %>
+  	<%= f.submit 'Login' %>
   </div>
 
 <% end %>
