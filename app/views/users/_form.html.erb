@@ -18,6 +18,13 @@
     <%= error_message @user, :password_confirmation %>
   </div>
 
+  <% if @user.new_record? %>
+    <div class="field">
+      <%= label_tag :spam_filter, 'I am human: 2 + 3 = ' %>
+      <%= text_field_tag :spam_filter %>
+    </div>
+  <% end %>
+
   <%= f.submit "Submit" %>
 
 <% end %>
