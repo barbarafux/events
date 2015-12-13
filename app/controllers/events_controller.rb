@@ -35,11 +35,12 @@ class EventsController < ApplicationController
 	  	@event = Event.new(event_params)
 
 	    respond_to do |format|
-	      if @event.save
+	      if params[:spam_filter] == "5" && @event.save
 	        format.html { redirect_to @event, notice: 'Event was successfully created.' }
 	        format.json { render :show, status: :created, location: @event }
 	        format.ics { render text: @event.to_ics, mime_type: Mime::Type["text/calendar"] }
 	      else
+	      	flash[:error] = "Spam check fail."
 	        format.html { render :new }
 	        format.json { render json: @event.errors, status: :unprocessable_entity }
 	      end
@@ -80,6 +81,7 @@ private
     								  :website,
     								  :city_id,
     								  :image,
-    								  :remove_image)
+    								  :remove_image
+    								  )
     end
 end
