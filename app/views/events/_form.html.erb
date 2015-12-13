@@ -34,6 +34,15 @@
     <%= f.file_field :image %>
     <%= f.check_box :remove_image %> Remove image
     <%= error_message @event, :image %>
+  </div>
+
+  <% if @event.new_record? %>
+    <div class="field">
+      <%= label_tag :spam_filter, 'I am human: 2 + 3 = ' %>
+      <%= text_field_tag :spam_filter %>
+    </div>
+  <% end %>
+
 <br />
    <%= f.submit "Submit", class: "btn btn-sm  btn-primary" %>
 <% end %>
