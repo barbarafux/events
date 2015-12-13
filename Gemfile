@@ -9,18 +9,19 @@ gem 'uglifier', '>= 1.3.0'							# Use Uglifier as compressor for JavaScript ass
 gem 'coffee-rails', '~> 4.1.0'						# Use CoffeeScript for .coffee assets and views
 # gem 'therubyracer', platforms: :ruby 				# See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'jquery-rails'									# Use jquery as the JavaScript library
-gem 'bootstrap-sass'    							# Bootstrap
-gem 'font-awesome-sass'	    		        		# Better Icon Font
 gem 'turbolinks'									# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'jbuilder', '~> 2.0'							# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'sdoc', '~> 0.4.0', group: :doc					# bundle exec rake doc:rails generates the API under doc/api.
-
-
-gem 'kaminari'										# Used for pagination
 gem 'bcrypt', '~> 3.1.7'							# Use ActiveModel has_secure_password
 # gem 'unicorn'										# Use Unicorn as the app server
 # gem 'capistrano-rails', group: :development		# Use Capistrano for deployment
 gem 'carrierwave'									# Used for image upload
+gem 'pundit'										# Used for authorization
+
+# DESIGN
+gem 'bootstrap-sass'    							# Bootstrap
+gem 'font-awesome-sass'	    		        		# Better Icon Font
+gem 'kaminari'										# Used for pagination
 
 group :development, :test do
   gem 'byebug'										# Call 'byebug' anywhere in the code to stop execution and get a debugger console
