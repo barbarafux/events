@@ -11,15 +11,22 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
+	def edit
+	end	
+
 	def create
-		@user = User.new(user_params)
-		
-		if @user.save
-			session[:user_id] = @user.id
-			redirect_to root_url, notice: 'User created.'
-		else
-			render :new
-		end
+	  	@user = User.new(user_params)
+
+	    respond_to do |format|
+	      if params[:spam_filter] == "5" && @user.save
+	        format.html { redirect_to @user, notice: 'User was successfully created.' }
+	        format.json { render :show, status: :created, location: @user }
+	      else
+	      	flash.now[:error] = "Spam check fail."
+	        format.html { render :new }
+	        format.json { render json: @user.errors, status: :unprocessable_entity }
+	      end
+	    end		
 	end
 
 	def update
@@ -35,19 +42,26 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
+		@user.destroy
+		respond_to do |format|
+			format.html { redirect_to user_url, notice: 'User was deleted.' }
+			format.json { head :no_content }
+		end
 	end
 
 
 private
 
+	def set_user
+		@user = User.find(params[:id])
+	end
+
 	def user_params
 		params.require(:user).permit(:email,
 									 :password,
-									 :password_confirmation)
-	end
-
-	def set_user
-		@user = User.find(params[:id])
+									 :password_confirmation,
+									 :spam_filter
+									 )
 	end
 
 end
