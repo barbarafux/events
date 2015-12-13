@@ -1,11 +1,5 @@
 module EventsHelper
 
-	def error_message(model, attribute)
-		if model.errors[attribute].present?
-			model.errors[attribute].first
-		end
-	end
-
 	def friendly_date(date)
 		date.strftime('%d. %B %Y %H:%M')
 	end
