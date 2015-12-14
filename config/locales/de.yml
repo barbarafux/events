@@ -208,3 +208,7 @@ de:
       long: "%A, %d. %B %Y, %H:%M Uhr"
       short: "%d. %B, %H:%M Uhr"
     pm: nachmittags
+  pundit:
+    default: 'Sie sind nicht authorisiert diese Aktion durchzuführen'
+    event_policy:
+      destroy?: 'Sie können diesen Eevnt nicht löschen!'

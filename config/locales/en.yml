@@ -227,3 +227,7 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+  pundit:
+    default: 'You cannot perform this action.'
+    event_policy:
+      destroy?: 'You cannot destroy this post!'
