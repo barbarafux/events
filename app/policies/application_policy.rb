@@ -1,5 +1,6 @@
 class ApplicationPolicy
   attr_reader :user, :record
+  #ersetzt getter methode
 
   def initialize(user, record)
     @user = user

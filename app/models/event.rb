@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
 	belongs_to :city
+	belongs_to :user
+
 
 	validates_presence_of :name, :start_date, :city_id#, :spam_filter
 

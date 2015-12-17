@@ -35,5 +35,7 @@
 <br \>
 <br \>
 <%= link_to 'Edit', edit_event_path, class: "btn btn-link" %>| 
-<%= link_to 'Back', events_path, class: "btn btn-link"  %>| 
+<%= link_to 'Back', events_path, class: "btn btn-link"  %>
+<% if policy(@event).destroy? %>|
 <%= link_to 'Delete', event_path(@event), :method => :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

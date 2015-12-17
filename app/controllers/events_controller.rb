@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+
 	before_action :set_event, only: [:show, :edit, :update, :destroy]
 
 	def index
@@ -12,10 +13,12 @@ class EventsController < ApplicationController
 			    	@events = Event.today
 			    	@partial_name = 'today'
 			    when 'past'
+			 		@events = policy_scope(Event)
 			 		@events = Event.where('start_date < ?', DateTime.now-1).order('start_date desc').page(params[:page]).per(4)
 			 		@partial_name = 'past'
 		  	    else
-		  	    	@events = Event.where('start_date > ?', DateTime.now).order('start_date asc').group_by { |t| t.start_date.beginning_of_month}
+		  	    	@events = policy_scope(Event)
+		  	    	#@events = Event.where('start_date > ?', DateTime.now).order('start_date asc').group_by { |t| t.start_date.beginning_of_month}
 		  	    	@partial_name = 'upcoming'
 		  	end
 		 end
@@ -29,16 +32,18 @@ class EventsController < ApplicationController
 	end
 
 	def edit
+		authorize @event
 	end
 
 	def create
-	  	@event = Event.new(event_params)
+	  	authorize @event
+	  	@event = current_user.events.new(event_params)
 
 	    respond_to do |format|
 	      if params[:spam_filter] == "5" && @event.save
 	        format.html { redirect_to @event, notice: 'Event was successfully created.' }
 	        format.json { render :show, status: :created, location: @event }
-	        format.ics { render text: @event.to_ics, mime_type: Mime::Type["text/calendar"] }
+	        #format.ics { render text: @event.to_ics, mime_type: Mime::Type["text/calendar"] }
 	      else
 	      	flash[:error] = "Spam check fail."
 	        format.html { render :new }
@@ -48,6 +53,7 @@ class EventsController < ApplicationController
 	end
 
 	def update
+		authorize @event
 		respond_to do |format|
 			if @event.update(event_params)
 				format.html { redirect_to @event, notice: 'Event was updated.' }
@@ -60,13 +66,14 @@ class EventsController < ApplicationController
 	end
 
 	def destroy
+		authorize @event
 		@event.destroy
+
 		respond_to do |format|
-			format.html { redirect_to event_url, notice: 'Event was deleted.' }
+			format.html { redirect_to events_url, notice: 'Event was deleted.' }
 			format.json { head :no_content }
 		end
 	end
-
 
 private
 
@@ -84,4 +91,5 @@ private
     								  :remove_image
     								  )
     end
+    
 end
