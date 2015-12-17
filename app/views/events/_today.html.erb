@@ -1,13 +1,22 @@
 <!-- TODAY -->
 <h3>Happening today</h3>
-<% @events.each do |event| %>
-    <h4><%= link_to event.name, event %></h4>
-      <%#= localize(event.start_date) %>
-      <p><%= friendly_date(event.start_date) %>
-    <% if event.end_date.present? && event.end_date != event.start_date %>
-       until <%= friendly_date(event.end_date) %>
-       <%#= localize(event.end_date) %>
-    <% end %>
-    <%= '- ' + event.city.name %>, <%= event.city.country %></p>
-<% end %>
+
+<div class="row">
+	<div class="container">
+		<div class="col-xs-3">
+			<% @events.each do |event| %>	
+				<div class="thumbnail">	
+    			<h4><%= link_to event.name, event %></h4>
+      				<%#= localize(event.start_date) %>
+      			<p><%= friendly_date(event.start_date) %>
+    			<% if event.end_date.present? && event.end_date != event.start_date %>
+       		until <%= friendly_date(event.end_date) %>
+       		<%#= localize(event.end_date) %>
+    			<% end %>
+    		<%= '- ' + event.city.name %>, <%= event.city.country %></p>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
 <!-- END ALL -->
