@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4' 				
-gem 'mysql2', '~> 0.3.20'						    # Use mysql as the database for Active Record
+gem 'mysql2', '~> 0.3.20'						    # MYSQL as the database for Active Record
 
-gem 'sass-rails', '~> 5.0'							# Use SCSS for stylesheets
+gem 'sass-rails', '~> 5.0'							# SCSS for stylesheets
 gem 'uglifier', '>= 1.3.0'							# Use Uglifier as compressor for JavaScript assets
 gem 'coffee-rails', '~> 4.1.0'						# Use CoffeeScript for .coffee assets and views
 # gem 'therubyracer', platforms: :ruby 				# See https://github.com/rails/execjs#readme for more supported runtimes
@@ -13,15 +13,15 @@ gem 'turbolinks'									# Turbolinks makes following links in your web applicat
 gem 'jbuilder', '~> 2.0'							# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'sdoc', '~> 0.4.0', group: :doc					# bundle exec rake doc:rails generates the API under doc/api.
 gem 'bcrypt', '~> 3.1.7'							# Use ActiveModel has_secure_password
-# gem 'unicorn'										# Use Unicorn as the app server
+# gem 'unicorn'										# Unicorn as the app server
 # gem 'capistrano-rails', group: :development		# Use Capistrano for deployment
-gem 'carrierwave'									# Used for image upload
-gem 'pundit'										# Used for authorization
+gem 'carrierwave'									# Image upload
+gem 'pundit'										# Authorization
 
 # DESIGN
 gem 'bootstrap-sass'    							# Bootstrap
 gem 'font-awesome-sass'	    		        		# Better Icon Font
-gem 'kaminari'										# Used for pagination
+gem 'kaminari'										# Pagination
 
 group :development, :test do
   gem 'byebug'										# Call 'byebug' anywhere in the code to stop execution and get a debugger console
