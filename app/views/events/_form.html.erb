@@ -19,7 +19,7 @@
 
   <div class="field">
     <%= f.label :website %>
-		<%= f.text_field :website, :style => "width:300px" %>
+		<%= f.text_field :website, :style => "width:150px" %>
     <%= error_message @event, :website %>
   </div>
 
@@ -39,7 +39,8 @@
   <% if @event.new_record? %>
     <div class="field">
       <%= label_tag :spam_filter, 'I am human: 2 + 3 = ' %>
-      <%= text_field_tag :spam_filter %>
+      <%#= text_field_tag :spam_filter  %>
+      <%= text_field_tag :spam_filter, '', style: "width:20px" %>
     </div>
   <% end %>
 
