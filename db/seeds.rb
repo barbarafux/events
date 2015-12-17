@@ -6,6 +6,25 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# 57.times do |i|
+#   Event.create([{
+#   	name: "Lipsum Post #{i}",
+#   	start_date: DateTime.new("09/01/2016 17:00"),
+#   	end_date: DateTime.new("10/01/2016 19:00"),
+#   	city: "#{i}"}])
+# end
+
+#Event.destroy_all
+
+# 15.times do |i|
+#   Event.create!(name: "Event #{i+35}",
+#                 start_date: (rand*300).days.from_now,
+#                 end_date: (rand*300).days.from_now,
+#                 website: "",
+#                 city_id: rand(1..55))
+# end
+
+
 # cities = City.create([
 # { name: 'Alicante', country: 'Spain', continent: 'Europe' },
 # { name: 'Amsterdam', country: 'Netherlands', continent: 'Europe' },
